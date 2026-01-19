@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio website showcasing web development projects and skills">
+  <meta name="author" content="Your Name">
+  <title>Your Name - Web Developer Portfolio</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="logo">Portfolio</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <button class="mobile-menu-button" id="mobileMenuBtn" aria-label="Toggle menu">
+        ☰
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1 class="hero-title">Hi, I'm Your Name</h1>
+      <p class="hero-subtitle">Full-Stack Developer & Designer</p>
+      <p class="hero-description">
+        I create beautiful, functional web experiences that solve real-world problems.
+        Passionate about clean code, elegant design, and innovative solutions.
+      </p>
+      <div class="cta-buttons">
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <p class="section-subtitle">
+      Passionate developer with a keen eye for design and user experience
+    </p>
+    <div class="about-content fade-in">
+      <div class="about-text">
+        <p>
+          Hello! I'm a web developer with a passion for creating engaging digital experiences.
+          I specialize in building modern, responsive websites and applications that not only
+          look great but also provide exceptional user experiences.
+        </p>
+        <p>
+          With expertise in both front-end and back-end technologies, I bring ideas to life
+          through clean, efficient code. I'm constantly learning and staying up-to-date with
+          the latest web technologies and best practices.
+        </p>
+        <p>
+          When I'm not coding, you can find me exploring new design trends, contributing to
+          open-source projects, or sharing knowledge with the developer community.
+        </p>
+      </div>
+      <div class="about-image">
+        👨‍💻
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2 class="section-title">Featured Projects</h2>
+    <p class="section-subtitle">
+      A selection of my recent work and personal projects
+    </p>
+    <div class="projects-grid">
+      <!-- Project 1 -->
+      <article class="project-card fade-in">
+        <img src="images/project-1.png" alt="Project 1 - Analytics Dashboard" class="project-image">
+        <div class="project-content">
+          <h3 class="project-title">Analytics Dashboard</h3>
+          <p class="project-description">
+            A modern analytics dashboard with real-time data visualization, featuring interactive
+            charts and comprehensive reporting tools.
+          </p>
+          <div class="project-tags">
+            <span class="tag">React</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Chart.js</span>
+            <span class="tag">Node.js</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">
+              <span>View Demo</span> →
+            </a>
+            <a href="#" class="project-link">
+              <span>GitHub</span> →
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="project-card fade-in">
+        <img src="images/project-2.png" alt="Project 2 - Mobile App" class="project-image">
+        <div class="project-content">
+          <h3 class="project-title">Mobile App UI</h3>
+          <p class="project-description">
+            Beautiful and intuitive mobile application interface with smooth animations
+            and modern design patterns for enhanced user engagement.
+          </p>
+          <div class="project-tags">
+            <span class="tag">React Native</span>
+            <span class="tag">Expo</span>
+            <span class="tag">Firebase</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">
+              <span>View Demo</span> →
+            </a>
+            <a href="#" class="project-link">
+              <span>GitHub</span> →
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="project-card fade-in">
+        <img src="images/project-3.png" alt="Project 3 - Business Intelligence" class="project-image">
+        <div class="project-content">
+          <h3 class="project-title">Business Intelligence Platform</h3>
+          <p class="project-description">
+            Comprehensive BI platform with advanced analytics, custom reports, and data
+            integration capabilities for business decision making.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Vue.js</span>
+            <span class="tag">D3.js</span>
+            <span class="tag">Python</span>
+            <span class="tag">PostgreSQL</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">
+              <span>View Demo</span> →
+            </a>
+            <a href="#" class="project-link">
+              <span>GitHub</span> →
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <h2 class="section-title">Skills & Technologies</h2>
+    <p class="section-subtitle">
+      The tools and technologies I work with
+    </p>
+    <div class="skills-grid">
+      <div class="skill-category fade-in">
+        <h3>Frontend Development</h3>
+        <div class="skill-items">
+          <span class="skill-item">HTML5</span>
+          <span class="skill-item">CSS3</span>
+          <span class="skill-item">JavaScript</span>
+          <span class="skill-item">TypeScript</span>
+          <span class="skill-item">React</span>
+          <span class="skill-item">Vue.js</span>
+          <span class="skill-item">Next.js</span>
+          <span class="skill-item">Tailwind CSS</span>
+        </div>
+      </div>
+
+      <div class="skill-category fade-in">
+        <h3>Backend Development</h3>
+        <div class="skill-items">
+          <span class="skill-item">Node.js</span>
+          <span class="skill-item">Express</span>
+          <span class="skill-item">Python</span>
+          <span class="skill-item">Django</span>
+          <span class="skill-item">MongoDB</span>
+          <span class="skill-item">PostgreSQL</span>
+          <span class="skill-item">REST APIs</span>
+          <span class="skill-item">GraphQL</span>
+        </div>
+      </div>
+
+      <div class="skill-category fade-in">
+        <h3>Tools & Others</h3>
+        <div class="skill-items">
+          <span class="skill-item">Git</span>
+          <span class="skill-item">GitHub</span>
+          <span class="skill-item">VS Code</span>
+          <span class="skill-item">Figma</span>
+          <span class="skill-item">Docker</span>
+          <span class="skill-item">AWS</span>
+          <span class="skill-item">CI/CD</span>
+          <span class="skill-item">Agile</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="contact-content fade-in">
+      <p class="section-subtitle">
+        I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:your.email@example.com" class="contact-link" aria-label="Email">
+          ✉️
+        </a>
+        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="GitHub">
+          🔗
+        </a>
+        <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="LinkedIn">
+          💼
+        </a>
+        <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="Twitter">
+          🐦
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Your Name. All rights reserved. Built with ❤️</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
