@@ -9,13 +9,13 @@
   --color-text-primary: #ffffff;
   --color-text-secondary: #b4b4c8;
   --color-text-muted: #6e6e8f;
-  
+
   /* Gradient Colors */
   --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
   --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
   --gradient-warm: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-  
+
   /* Spacing */
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
@@ -23,7 +23,7 @@
   --spacing-lg: 2rem;
   --spacing-xl: 3rem;
   --spacing-2xl: 4rem;
-  
+
   /* Typography */
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-size-sm: 0.875rem;
@@ -32,18 +32,18 @@
   --font-size-xl: 1.5rem;
   --font-size-2xl: 2rem;
   --font-size-3xl: 3rem;
-  
+
   /* Border Radius */
   --radius-sm: 0.5rem;
   --radius-md: 1rem;
   --radius-lg: 1.5rem;
-  
+
   /* Shadows */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
   --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.3);
-  
+
   /* Transitions */
   --transition-fast: 0.2s ease;
   --transition-base: 0.3s ease;
@@ -81,6 +81,11 @@ body {
   right: 0;
   z-index: 1000;
   padding: var(--spacing-md) var(--spacing-lg);
+
+  background: rgba(10, 10, 15, 0.85);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-md);
+
   transition: var(--transition-base);
 }
 
@@ -164,7 +169,7 @@ body {
   padding: var(--spacing-2xl) var(--spacing-lg);
 }
 
-.hero::before {
+/* .hero::before {
   content: '';
   position: absolute;
   top: -50%;
@@ -176,11 +181,29 @@ body {
   border-radius: 50%;
   filter: blur(100px);
   animation: float 8s ease-in-out infinite;
+} */
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background: var(--gradient-primary);
+  opacity: 0.12;
+  filter: blur(160px);
+  z-index: 0;
 }
 
+
 @keyframes float {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  50% { transform: translate(-50px, 50px) rotate(180deg); }
+
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  50% {
+    transform: translate(-50px, 50px) rotate(180deg);
+  }
 }
 
 .hero-content {
@@ -261,6 +284,7 @@ body {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -304,7 +328,7 @@ section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--spacing-xl);
-  align-items: center;
+  align-items: start;
 }
 
 .about-text {
@@ -317,7 +341,7 @@ section {
   margin-bottom: var(--spacing-md);
 }
 
-.about-image {
+/* .about-image {
   background: var(--gradient-primary);
   border-radius: var(--radius-lg);
   aspect-ratio: 1;
@@ -326,7 +350,30 @@ section {
   justify-content: center;
   font-size: 4rem;
   box-shadow: var(--shadow-lg);
+} */
+
+.about-image {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
+
+
+.about-image img {
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+  box-shadow: var(--shadow-lg);
+}
+
+
+.about-image img {
+  max-width: 380px;
+  aspect-ratio: 4 / 5;
+}
+
 
 /* ===================================
    PROJECTS SECTION
@@ -537,35 +584,35 @@ footer {
     transition: var(--transition-base);
     box-shadow: var(--shadow-lg);
   }
-  
+
   .nav-links.active {
     right: 0;
   }
-  
+
   .mobile-menu-button {
     display: block;
   }
-  
+
   .about-content {
     grid-template-columns: 1fr;
   }
-  
+
   .about-image {
     order: -1;
   }
-  
+
   .projects-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .skills-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .cta-buttons {
     flex-direction: column;
   }
-  
+
   .btn {
     width: 100%;
   }
@@ -576,11 +623,11 @@ footer {
     --spacing-xl: 2rem;
     --spacing-2xl: 3rem;
   }
-  
+
   .hero {
     padding: var(--spacing-xl) var(--spacing-md);
   }
-  
+
   section {
     padding: var(--spacing-xl) var(--spacing-md);
   }
