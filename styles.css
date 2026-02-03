@@ -190,6 +190,8 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
   animation: fadeInUp 1s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-title {
@@ -411,6 +413,9 @@ section {
   border-radius: var(--radius-lg);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
 
 .about-content .section-title {
@@ -504,12 +509,73 @@ section {
   transition: var(--transition-base);
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 1;
+}
+
+/* ===================================
+   SHARED GLOW EFFECT
+   =================================== */
+.hero-content::before,
+.about-content::before,
+.skill-category::before,
+.project-card::before,
+.hero-content::after,
+.about-content::after,
+.skill-category::after,
+.project-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* Background gradient glow */
+.hero-content::before,
+.about-content::before,
+.skill-category::before,
+.project-card::before {
+  background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(102, 126, 234, 0.12),
+      transparent 40%);
+  z-index: -1;
+}
+
+/* Border gradient glow */
+.hero-content::after,
+.about-content::after,
+.skill-category::after,
+.project-card::after {
+  border-radius: inherit;
+  padding: 1.5px;
+  background: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(255, 255, 255, 0.3),
+      rgba(102, 126, 234, 0.2) 50%,
+      transparent 80%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: 2;
+}
+
+.hero-content:hover::before,
+.about-content:hover::before,
+.skill-category:hover::before,
+.project-card:hover::before,
+.hero-content:hover::after,
+.about-content:hover::after,
+.skill-category:hover::after,
+.project-card:hover::after {
+  opacity: 1;
 }
 
 .project-card:hover {
   transform: translateY(-8px);
-  box-shadow: var(--shadow-glow);
-  border-color: rgba(102, 126, 234, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(102, 126, 234, 0.1);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .project-image {
@@ -517,6 +583,8 @@ section {
   height: 240px;
   object-fit: cover;
   transition: var(--transition-slow);
+  position: relative;
+  z-index: 1;
 }
 
 .project-card:hover .project-image {
@@ -524,6 +592,8 @@ section {
 }
 
 .project-content {
+  position: relative;
+  z-index: 3;
   padding: var(--spacing-lg);
 }
 
@@ -589,6 +659,9 @@ section {
   border-radius: var(--radius-lg);
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
 
 .skill-category h3 {
