@@ -279,6 +279,7 @@ body {
   align-items: center;
   justify-content: center;
   min-width: 200px;
+  text-decoration: none;
 }
 
 .glass-button::before {
