@@ -807,12 +807,21 @@ footer {
     display: none;
   }
 
-  .about-content {
+  .about-grid {
     grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .about-content {
+    padding: var(--spacing-lg);
   }
 
   .about-image {
     order: -1;
+  }
+
+  .about-blob-svg {
+    max-width: 300px;
   }
 
   .projects-grid {
