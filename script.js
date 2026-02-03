@@ -331,7 +331,7 @@ document.querySelectorAll('.glass-button').forEach(button => {
 });
 
 // Section glow interaction
-const glowElements = document.querySelectorAll('.hero-content, .about-content, .skill-category, .project-card');
+const glowElements = document.querySelectorAll('.hero-content, .about-content, .skill-category, .project-card, .contact-content');
 
 glowElements.forEach(element => {
   element.addEventListener('mousemove', (e) => {
@@ -343,4 +343,4 @@ glowElements.forEach(element => {
   });
 });
 
-console.log('Portfolio website loaded successfully! 🚀');
+console.log('Portfolio website loaded successfully');

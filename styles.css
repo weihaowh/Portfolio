@@ -535,10 +535,12 @@ section {
 .about-content::before,
 .skill-category::before,
 .project-card::before,
+.contact-content::before,
 .hero-content::after,
 .about-content::after,
 .skill-category::after,
-.project-card::after {
+.project-card::after,
+.contact-content::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -551,7 +553,8 @@ section {
 .hero-content::before,
 .about-content::before,
 .skill-category::before,
-.project-card::before {
+.project-card::before,
+.contact-content::before {
   background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
       rgba(102, 126, 234, 0.12),
       transparent 40%);
@@ -562,7 +565,8 @@ section {
 .hero-content::after,
 .about-content::after,
 .skill-category::after,
-.project-card::after {
+.project-card::after,
+.contact-content::after {
   border-radius: inherit;
   padding: 1.5px;
   background: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
@@ -580,10 +584,12 @@ section {
 .about-content:hover::before,
 .skill-category:hover::before,
 .project-card:hover::before,
+.contact-content:hover::before,
 .hero-content:hover::after,
 .about-content:hover::after,
 .skill-category:hover::after,
-.project-card:hover::after {
+.project-card:hover::after,
+.contact-content:hover::after {
   opacity: 1;
 }
 
