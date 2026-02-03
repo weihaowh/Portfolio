@@ -280,6 +280,7 @@ body {
   justify-content: center;
   min-width: 200px;
   text-decoration: none;
+  gap: 0.5rem;
 }
 
 .glass-button::before {
