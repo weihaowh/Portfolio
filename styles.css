@@ -808,8 +808,20 @@ footer {
   }
 
   .about-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: var(--spacing-lg);
+    width: 100%;
+  }
+
+  .about-text {
+    text-align: center;
+    width: 100%;
+  }
+
+  .about-text p {
+    margin-bottom: var(--spacing-md);
   }
 
   .about-content {
@@ -821,7 +833,14 @@ footer {
   }
 
   .about-blob-svg {
-    max-width: 300px;
+    max-width: 280px;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .blob-text {
+    fill: rgba(255, 255, 255, 0.8);
+    mix-blend-mode: normal;
   }
 
   .projects-grid {
