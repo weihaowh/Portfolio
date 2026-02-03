@@ -49,6 +49,19 @@ function updateActiveNavLink() {
   const sections = document.querySelectorAll('section');
   const scrollPosition = window.scrollY + 100;
 
+  // Check if we are at the bottom of the page to highlight Contact
+  const isAtBottom = (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 20;
+
+  if (isAtBottom) {
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#contact') {
+        link.classList.add('active');
+      }
+    });
+    return;
+  }
+
   sections.forEach(section => {
     const sectionTop = section.offsetTop;
     const sectionHeight = section.offsetHeight;
