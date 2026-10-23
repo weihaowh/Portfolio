@@ -331,7 +331,7 @@ document.querySelectorAll('.glass-button').forEach(button => {
 });
 
 // Section glow interaction
-const glowElements = document.querySelectorAll('.hero-content, .about-content, .skill-category, .project-card, .contact-content');
+const glowElements = document.querySelectorAll('.hero-content, .about-content, .pt-detail, .project-card, .contact-content');
 
 glowElements.forEach(element => {
   element.addEventListener('mousemove', (e) => {
@@ -340,6 +340,87 @@ glowElements.forEach(element => {
     const y = e.clientY - rect.top;
     element.style.setProperty('--mouse-x', `${x}px`);
     element.style.setProperty('--mouse-y', `${y}px`);
+  });
+});
+
+// Skills periodic table
+const ptTiles = document.querySelectorAll('.pt-tile');
+const ptChips = document.querySelectorAll('.pt-chip');
+const ptDetail = document.querySelector('.pt-detail');
+const ptLogo = ptDetail.querySelector('.pt-detail-logo');
+const ptLogoImg = ptLogo.querySelector('img');
+const ptLogoSym = ptLogo.querySelector('.pt-detail-sym');
+const familyNames = {};
+ptChips.forEach(chip => familyNames[chip.dataset.filter] = chip.textContent.trim());
+
+document.getElementById('pt-count').textContent = ptTiles.length;
+
+ptTiles.forEach((tile, index) => {
+  const num = String(index + 1).padStart(2, '0');
+  tile.style.setProperty('--i', index);
+  tile.insertAdjacentHTML('afterbegin', `<span class="pt-num">${num}</span>`);
+
+  const show = () => showElement(tile, num);
+  tile.addEventListener('mouseenter', show);
+  tile.addEventListener('focus', show);
+  tile.addEventListener('click', () => {
+    ptTiles.forEach(t => t.classList.toggle('selected', t === tile));
+    show();
+  });
+});
+
+function showElement(tile, num) {
+  const family = tile.dataset.family;
+  ptLogo.dataset.family = family;
+  ptLogoSym.textContent = tile.querySelector('.pt-sym').textContent;
+  ptDetail.querySelector('.pt-detail-num').textContent = num;
+  ptDetail.querySelector('.pt-detail-name').textContent = tile.querySelector('.pt-name').textContent;
+  ptDetail.querySelector('.pt-detail-family').textContent = familyNames[family];
+  ptDetail.querySelector('.pt-detail-desc').textContent = tile.dataset.desc || '';
+
+  const logo = iconUrl(tile.dataset.icon);
+  if (logo) {
+    ptLogoImg.src = logo;
+    ptLogoImg.alt = tile.querySelector('.pt-name').textContent + ' logo';
+  }
+  setLogoVisible(Boolean(logo));
+}
+
+const iconSources = {
+  dev: path => `https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/${path}.svg`,
+  si: slug => `https://cdn.jsdelivr.net/npm/simple-icons@16.0.0/icons/${slug}.svg`,
+  lu: name => `https://cdn.jsdelivr.net/npm/lucide-static@0.544.0/icons/${name}.svg`
+};
+
+function iconUrl(icon) {
+  if (!icon) return null;
+  const [source, path] = icon.split(':');
+  return iconSources[source] ? iconSources[source](path) : null;
+}
+
+// Warm the cache so the panel swaps instantly on hover
+ptTiles.forEach(tile => {
+  const url = iconUrl(tile.dataset.icon);
+  if (url) new Image().src = url;
+});
+
+function setLogoVisible(visible) {
+  ptLogoImg.hidden = !visible;
+  ptLogoSym.hidden = visible;
+  ptLogo.classList.toggle('has-logo', visible);
+}
+
+// Fall back to the element symbol if a logo fails to load
+ptLogoImg.addEventListener('error', () => setLogoVisible(false));
+
+ptChips.forEach(chip => {
+  chip.addEventListener('click', () => {
+    const isActive = chip.classList.toggle('active');
+    ptChips.forEach(c => c !== chip && c.classList.remove('active'));
+    chip.setAttribute('aria-pressed', isActive);
+    ptTiles.forEach(tile => {
+      tile.classList.toggle('dim', isActive && tile.dataset.family !== chip.dataset.filter);
+    });
   });
 });
 

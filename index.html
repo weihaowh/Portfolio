@@ -11,7 +11,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css">
@@ -441,50 +441,98 @@
 
   <!-- Skills Section -->
   <section id="skills">
-    <h2 class="section-title">Skills & Technologies</h2>
-    <p class="section-subtitle">
-      The tools and technologies I work with
-    </p>
-    <div class="skills-grid">
-      <div class="skill-category fade-in">
-        <h3>Core Programming & Software Engineering</h3>
-        <div class="skill-items">
-          <span class="skill-item">C++</span>
-          <span class="skill-item">C#</span>
-          <span class="skill-item">OpenCV</span>
-          <span class="skill-item">HTML/CSS/JS</span>
-          <span class="skill-item">Python</span>
-          <span class="skill-item">Unity</span>
-          <span class="skill-item">Unreal Engine</span>
-          <span class="skill-item">Godot Engine</span>
-          <span class="skill-item">TypeScript</span>
-          <span class="skill-item">State Machines & System Design</span>
-        </div>
+    <header class="pt-header">
+      <span class="pt-eyebrow">Skills</span>
+      <h2 class="pt-title">The periodic table <em>of my stack.</em></h2>
+      <p class="pt-intro">
+        <span id="pt-count">40</span> elements in six families. Hover a tile to see its logo,
+        or pick a family to light it up.
+      </p>
+    </header>
+
+    <div class="pt-filters" role="group" aria-label="Filter skills by family">
+      <button class="pt-chip" data-filter="lang"><i class="pt-swatch"></i>Languages</button>
+      <button class="pt-chip" data-filter="engine"><i class="pt-swatch"></i>Engines &amp; XR</button>
+      <button class="pt-chip" data-filter="sim"><i class="pt-swatch"></i>Simulation</button>
+      <button class="pt-chip" data-filter="ai"><i class="pt-swatch"></i>AI &amp; Agents</button>
+      <button class="pt-chip" data-filter="eng"><i class="pt-swatch"></i>Engineering</button>
+      <button class="pt-chip" data-filter="ops"><i class="pt-swatch"></i>DevOps &amp; Version Control</button>
+    </div>
+
+    <div class="pt-layout fade-in">
+      <!--
+        data-icon picks the image shown in the side panel:
+          dev:<path>  devicon logo     (cdn.jsdelivr.net/gh/devicons/devicon)
+          si:<slug>   simple-icons logo (cdn.jsdelivr.net/npm/simple-icons)
+          lu:<name>   lucide icon       (cdn.jsdelivr.net/npm/lucide-static)
+        data-desc is the one-line caption under the name.
+      -->
+      <div class="pt-grid">
+        <!-- Languages -->
+        <button class="pt-tile" data-family="lang" data-icon="dev:cplusplus/cplusplus-original" data-desc="Engine &amp; simulation systems"><span class="pt-sym">C++</span><span class="pt-name">C++</span></button>
+        <button class="pt-tile" data-family="lang" data-icon="dev:csharp/csharp-original" data-desc="Unity gameplay &amp; tooling"><span class="pt-sym">C#</span><span class="pt-name">C#</span></button>
+        <button class="pt-tile" data-family="lang" data-icon="dev:python/python-original" data-desc="AI, data &amp; automation"><span class="pt-sym">Py</span><span class="pt-name">Python</span></button>
+        <button class="pt-tile" data-family="lang" data-icon="dev:typescript/typescript-original" data-desc="Typed web apps &amp; tooling"><span class="pt-sym">Ts</span><span class="pt-name">TypeScript</span></button>
+        <button class="pt-tile" data-family="lang" data-icon="dev:javascript/javascript-original" data-desc="Interactive web"><span class="pt-sym">Js</span><span class="pt-name">JavaScript</span></button>
+        <button class="pt-tile" data-family="lang" data-icon="dev:html5/html5-original" data-desc="Web interfaces"><span class="pt-sym">Ht</span><span class="pt-name">HTML / CSS</span></button>
+
+        <!-- Engines & XR -->
+        <button class="pt-tile" data-family="engine" data-icon="dev:unity/unity-original" data-desc="Real-time 3D &amp; simulation"><span class="pt-sym">Un</span><span class="pt-name">Unity</span></button>
+        <button class="pt-tile" data-family="engine" data-icon="dev:unrealengine/unrealengine-original" data-desc="High-fidelity real-time 3D"><span class="pt-sym">Ue</span><span class="pt-name">Unreal Engine</span></button>
+        <button class="pt-tile" data-family="engine" data-icon="dev:godot/godot-original" data-desc="Open-source game engine"><span class="pt-sym">Gd</span><span class="pt-name">Godot</span></button>
+        <button class="pt-tile" data-family="engine" data-icon="dev:blender/blender-original" data-desc="3D modeling &amp; assets"><span class="pt-sym">Bl</span><span class="pt-name">Blender</span></button>
+        <button class="pt-tile" data-family="engine" data-icon="si:khronosgroup" data-desc="Khronos cross-platform XR standard"><span class="pt-sym">Ox</span><span class="pt-name">OpenXR</span></button>
+        <button class="pt-tile" data-family="engine" data-icon="lu:headset" data-desc="Immersive training &amp; experiences"><span class="pt-sym">Vr</span><span class="pt-name">XR / VR Development</span></button>
+
+        <!-- Simulation -->
+        <button class="pt-tile" data-family="sim" data-icon="lu:orbit" data-desc="Modeling real-world systems"><span class="pt-sym">Sm</span><span class="pt-name">Simulation &amp; Modeling</span></button>
+        <button class="pt-tile" data-family="sim" data-icon="lu:atom" data-desc="Forces, gravity &amp; collisions"><span class="pt-sym">Ph</span><span class="pt-name">Physics Simulation</span></button>
+        <button class="pt-tile" data-family="sim" data-icon="lu:route" data-desc="A*, navmeshes &amp; steering"><span class="pt-sym">Pf</span><span class="pt-name">Pathfinding &amp; Navigation</span></button>
+        <button class="pt-tile" data-family="sim" data-icon="lu:shapes" data-desc="Algorithmic worlds &amp; content"><span class="pt-sym">Pg</span><span class="pt-name">Procedural Generation</span></button>
+        <button class="pt-tile" data-family="sim" data-icon="lu:layers" data-desc="Virtual replicas of real systems"><span class="pt-sym">Dt</span><span class="pt-name">Digital Twins</span></button>
+        <button class="pt-tile" data-family="sim" data-icon="lu:gauge" data-desc="Profiling &amp; frame-time budgets"><span class="pt-sym">Po</span><span class="pt-name">Performance Optimization</span></button>
+
+        <!-- AI & Agents -->
+        <button class="pt-tile" data-family="ai" data-icon="si:claude" data-desc="AI-assisted development"><span class="pt-sym">At</span><span class="pt-name">AI Tools</span></button>
+        <button class="pt-tile" data-family="ai" data-icon="lu:workflow" data-desc="Multi-step autonomous agents"><span class="pt-sym">Ag</span><span class="pt-name">Agentic Systems &amp; Workflows</span></button>
+        <button class="pt-tile" data-family="ai" data-icon="si:modelcontextprotocol" data-desc="Model Context Protocol servers &amp; agent skills"><span class="pt-sym">Mc</span><span class="pt-name">MCP &amp; Skills</span></button>
+        <button class="pt-tile" data-family="ai" data-icon="lu:message-square-code" data-desc="Building on large language models"><span class="pt-sym">Ll</span><span class="pt-name">LLM Integration</span></button>
+        <button class="pt-tile" data-family="ai" data-icon="lu:database-zap" data-desc="Retrieval-augmented generation"><span class="pt-sym">Rg</span><span class="pt-name">RAG Pipelines</span></button>
+        <button class="pt-tile" data-family="ai" data-icon="dev:opencv/opencv-original" data-desc="Image &amp; video understanding with OpenCV"><span class="pt-sym">Cv</span><span class="pt-name">Computer Vision</span></button>
+        <button class="pt-tile" data-family="ai" data-icon="lu:chart-line" data-desc="Turning raw data into insight"><span class="pt-sym">Da</span><span class="pt-name">Data Processing &amp; Analysis</span></button>
+
+        <!-- Engineering -->
+        <button class="pt-tile" data-family="eng" data-icon="lu:binary" data-desc="Efficient, scalable solutions"><span class="pt-sym">Ds</span><span class="pt-name">Data Structures &amp; Algorithms</span></button>
+        <button class="pt-tile" data-family="eng" data-icon="lu:blocks" data-desc="Clean, maintainable architecture"><span class="pt-sym">Op</span><span class="pt-name">OOP &amp; Design Patterns</span></button>
+        <button class="pt-tile" data-family="eng" data-icon="lu:webhook" data-desc="Designing &amp; consuming services"><span class="pt-sym">Ra</span><span class="pt-name">REST APIs</span></button>
+        <button class="pt-tile" data-family="eng" data-icon="lu:cpu" data-desc="Concurrency &amp; parallel workloads"><span class="pt-sym">Mt</span><span class="pt-name">Multithreading</span></button>
+        <button class="pt-tile" data-family="eng" data-icon="lu:flask-conical" data-desc="Unit &amp; integration testing"><span class="pt-sym">Ut</span><span class="pt-name">Automated Testing</span></button>
+        <button class="pt-tile" data-family="eng" data-icon="dev:githubactions/githubactions-original" data-desc="Automated builds &amp; deploys"><span class="pt-sym">Ci</span><span class="pt-name">CI / CD</span></button>
+        <button class="pt-tile" data-family="eng" data-icon="lu:kanban" data-desc="Iterative team delivery"><span class="pt-sym">Sc</span><span class="pt-name">Agile / Scrum</span></button>
+
+        <!-- DevOps & Version Control -->
+        <button class="pt-tile" data-family="ops" data-icon="dev:git/git-original" data-desc="Version control · GitHub &amp; GitLab"><span class="pt-sym">Gt</span><span class="pt-name">Git</span></button>
+        <button class="pt-tile" data-family="ops" data-icon="si:perforce" data-desc="Version control for large projects"><span class="pt-sym">P4</span><span class="pt-name">Perforce Helix Core</span></button>
+        <button class="pt-tile" data-family="ops" data-icon="lu:anchor" data-desc="3D version control"><span class="pt-sym">Ap</span><span class="pt-name">Anchorpoint</span></button>
+        <button class="pt-tile" data-family="ops" data-icon="dev:docker/docker-original" data-desc="Containerized environments"><span class="pt-sym">Dk</span><span class="pt-name">Docker</span></button>
+        <button class="pt-tile" data-family="ops" data-icon="dev:amazonwebservices/amazonwebservices-plain-wordmark" data-desc="Cloud infrastructure"><span class="pt-sym">Aw</span><span class="pt-name">AWS</span></button>
+        <button class="pt-tile" data-family="ops" data-icon="dev:firebase/firebase-original" data-desc="Realtime backend &amp; hosting"><span class="pt-sym">Fb</span><span class="pt-name">Firebase</span></button>
+        <button class="pt-tile" data-family="ops" data-icon="dev:linux/linux-original" data-desc="Servers &amp; command line"><span class="pt-sym">Lx</span><span class="pt-name">Linux</span></button>
+        <button class="pt-tile" data-family="ops" data-icon="dev:vscode/vscode-original" data-desc="Daily driver editor"><span class="pt-sym">Vs</span><span class="pt-name">VS Code</span></button>
       </div>
 
-      <div class="skill-category fade-in">
-        <h3>AI, Simulation & Data Processing</h3>
-        <div class="skill-items">
-          <span class="skill-item">Agent-Based Systems</span>
-          <span class="skill-item">Simulation & Modeling</span>
-          <span class="skill-item">Data Processing & Analysis</span>
-          <span class="skill-item">Data-Driven Systems</span>
-          <span class="skill-item">Pathfinding & Navigation</span>
+      <aside class="pt-detail" aria-live="polite">
+        <div class="pt-detail-logo">
+          <img alt="" hidden>
+          <span class="pt-detail-sym">?</span>
         </div>
-      </div>
-
-      <div class="skill-category fade-in">
-        <h3>Tools & Others</h3>
-        <div class="skill-items">
-          <span class="skill-item">Git/GitHub/GitLab</span>
-          <span class="skill-item">VS Code</span>
-          <span class="skill-item">Firebase</span>
-          <span class="skill-item">Docker</span>
-          <span class="skill-item">AWS</span>
-          <span class="skill-item">Perforce Helix Core</span>
-          <span class="skill-item">Copilot & other AI tools</span>
+        <div class="pt-detail-text">
+          <span class="pt-detail-num"></span>
+          <h3 class="pt-detail-name">Hover a tile</h3>
+          <span class="pt-detail-family">to inspect an element</span>
+          <p class="pt-detail-desc"></p>
         </div>
-      </div>
+      </aside>
     </div>
   </section>
 
