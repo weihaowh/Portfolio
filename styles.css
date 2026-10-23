@@ -1070,6 +1070,7 @@ body.modal-open {
   cursor: pointer;
   transition: var(--transition-fast);
   padding: 0 16px 0 10px;
+  white-space: nowrap;
 }
 
 .video-modal-back:hover,
