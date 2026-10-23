@@ -343,6 +343,94 @@ glowElements.forEach(element => {
   });
 });
 
+// Project preview videos: play while on screen, pause when scrolled away
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const videoObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.play().catch(() => {});
+    } else {
+      entry.target.pause();
+    }
+  });
+}, { threshold: 0.5 });
+
+if (!reduceMotion) {
+  document.querySelectorAll('video.project-image').forEach(video => videoObserver.observe(video));
+}
+
+// Video preview modal: a history entry is pushed on open so the browser Back button closes it
+const videoModal = document.getElementById('video-modal');
+const modalPlayer = videoModal.querySelector('.video-modal-player');
+let modalOpener = null;
+
+function openVideoModal(link) {
+  modalOpener = link;
+  modalPlayer.src = link.getAttribute('href');
+  modalPlayer.poster = link.dataset.poster || '';
+  videoModal.querySelector('.video-modal-title').textContent = link.dataset.title || '';
+
+  const tags = link.closest('.project-card')?.querySelector('.project-tags');
+  videoModal.querySelector('.video-modal-tags').innerHTML = tags ? tags.innerHTML : '';
+
+  videoModal.hidden = false;
+  document.body.classList.add('modal-open');
+  history.pushState({ videoModal: true }, '');
+  videoModal.querySelector('.video-modal-back').focus();
+  modalPlayer.play().catch(() => {});
+}
+
+function closeVideoModal() {
+  if (videoModal.hidden) return;
+  modalPlayer.pause();
+  modalPlayer.removeAttribute('src');
+  modalPlayer.load();
+  videoModal.hidden = true;
+  document.body.classList.remove('modal-open');
+  if (modalOpener) modalOpener.focus({ preventScroll: true });
+}
+
+// Closing via the UI rewinds the history entry; popstate then does the actual close
+function requestCloseVideoModal() {
+  if (history.state && history.state.videoModal) {
+    history.back();
+  } else {
+    closeVideoModal();
+  }
+}
+
+document.querySelectorAll('[data-video-preview]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    openVideoModal(link);
+  });
+});
+
+videoModal.querySelectorAll('[data-modal-close]').forEach(el => {
+  el.addEventListener('click', requestCloseVideoModal);
+});
+
+window.addEventListener('popstate', closeVideoModal);
+
+document.addEventListener('keydown', (e) => {
+  if (videoModal.hidden) return;
+  if (e.key === 'Escape') {
+    requestCloseVideoModal();
+  } else if (e.key === 'Tab') {
+    // Keep focus inside the dialog
+    const focusable = [...videoModal.querySelectorAll('button, video')];
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+});
+
 // Skills periodic table
 const ptTiles = document.querySelectorAll('.pt-tile');
 const ptChips = document.querySelectorAll('.pt-chip');

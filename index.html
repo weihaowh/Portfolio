@@ -307,6 +307,33 @@
       A selection of my recent work and personal projects
     </p>
     <div class="projects-grid">
+      <!-- Woodlands Checkpoint VR Vehicle Search Trainer -->
+      <article class="project-card fade-in">
+        <video src="images/WoodlandsCP_preview.webm" poster="images/WoodlandsCP.jpg" class="project-image"
+          muted loop playsinline preload="none"
+          aria-label="Woodlands Checkpoint VR vehicle search trainer preview"></video>
+        <div class="project-content">
+          <h3 class="project-title">Woodlands Checkpoint VR Trainer</h3>
+          <p class="project-description">
+            A VR vehicle-search trainer set in a digital twin of Woodlands Checkpoint. Trainees search cars with fully
+            interactive doors, bonnets and compartments, then record and classify every find on an in-hand tablet for
+            scoring. Instructors run the live checkpoint: barrier gates, traffic flow, weather, and scenario injects
+            such as contraband cars, nervous drivers and document mismatches.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Unreal Engine 5</span>
+            <span class="tag">VR</span>
+            <span class="tag">MetaHuman</span>
+          </div>
+          <div class="project-links">
+            <a href="images/WoodlandsCP_preview.webm" class="project-link" data-video-preview
+              data-title="Woodlands Checkpoint VR Trainer" data-poster="images/WoodlandsCP.jpg">
+              <span>Watch Preview</span> →
+            </a>
+          </div>
+        </div>
+      </article>
+
       <!-- Project 1 -->
       <article class="project-card fade-in">
         <img src="images/PRISM.png" alt="Project 1 - PRISM" class="project-image">
@@ -563,6 +590,30 @@
   <footer>
     <p>&copy; 2026 Sun Wei Hao. All rights reserved.</p>
   </footer>
+
+  <!-- Video preview modal (opened by links with data-video-preview) -->
+  <div class="video-modal" id="video-modal" role="dialog" aria-modal="true" aria-labelledby="video-modal-title" hidden>
+    <div class="video-modal-backdrop" data-modal-close></div>
+    <div class="video-modal-panel">
+      <header class="video-modal-header">
+        <button class="video-modal-back" data-modal-close aria-label="Back to projects">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Back to projects</span>
+        </button>
+        <div class="video-modal-heading">
+          <span class="video-modal-eyebrow">Project preview</span>
+          <h3 class="video-modal-title" id="video-modal-title"></h3>
+        </div>
+      </header>
+      <div class="video-modal-frame">
+        <video class="video-modal-player" controls playsinline></video>
+      </div>
+      <footer class="video-modal-footer">
+        <div class="video-modal-tags"></div>
+        <span class="video-modal-hint">Press <kbd>Esc</kbd> or use your browser's back button to return</span>
+      </footer>
+    </div>
+  </div>
 
   <!-- JavaScript -->
   <script src="script.js"></script>
