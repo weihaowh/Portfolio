@@ -512,4 +512,8 @@ ptChips.forEach(chip => {
   });
 });
 
+// Start with the first element (C++) selected so the panel is never empty
+ptTiles[0].classList.add('selected');
+showElement(ptTiles[0], '01');
+
 console.log('Portfolio website loaded successfully');
