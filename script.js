@@ -441,8 +441,6 @@ const ptLogoSym = ptLogo.querySelector('.pt-detail-sym');
 const familyNames = {};
 ptChips.forEach(chip => familyNames[chip.dataset.filter] = chip.textContent.trim());
 
-document.getElementById('pt-count').textContent = ptTiles.length;
-
 ptTiles.forEach((tile, index) => {
   const num = String(index + 1).padStart(2, '0');
   tile.style.setProperty('--i', index);
@@ -515,5 +513,35 @@ ptChips.forEach(chip => {
 // Start with the first element (C++) selected so the panel is never empty
 ptTiles[0].classList.add('selected');
 showElement(ptTiles[0], '01');
+
+// Experience timeline: the rail fills up to the middle of the viewport and lights each entry it passes
+const timeline = document.querySelector('.tl');
+const tlItems = timeline.querySelectorAll('.tl-item');
+let tlTicking = false;
+
+function updateTimeline() {
+  tlTicking = false;
+  const marker = window.innerHeight / 2;
+  const rect = timeline.getBoundingClientRect();
+  const progress = Math.min(Math.max((marker - rect.top) / rect.height, 0), 1);
+  timeline.style.setProperty('--progress', progress);
+  timeline.classList.toggle('in-progress', progress > 0 && progress < 1);
+
+  tlItems.forEach(item => {
+    const dot = item.querySelector('.tl-dot').getBoundingClientRect();
+    item.classList.toggle('reached', dot.top + dot.height / 2 <= marker);
+  });
+}
+
+function requestTimelineUpdate() {
+  if (!tlTicking) {
+    tlTicking = true;
+    requestAnimationFrame(updateTimeline);
+  }
+}
+
+window.addEventListener('scroll', requestTimelineUpdate, { passive: true });
+window.addEventListener('resize', requestTimelineUpdate);
+updateTimeline();
 
 console.log('Portfolio website loaded successfully');
