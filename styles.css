@@ -149,6 +149,29 @@ body {
   text-decoration: none;
   transition: var(--transition-base);
   border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+/* Medium screens: tighten the bar so seven links plus the button still fit */
+@media (max-width: 1080px) and (min-width: 769px) {
+  .nav-container {
+    gap: 20px;
+  }
+
+  .nav-links {
+    gap: 18px;
+  }
+
+  .nav-links a {
+    padding: 8px 2px;
+  }
+}
+
+/* Too narrow for the button too; the Contact link covers it until the mobile menu takes over */
+@media (max-width: 960px) and (min-width: 769px) {
+  .nav-cta-button {
+    display: none;
+  }
 }
 
 .nav-cta-button:hover {
