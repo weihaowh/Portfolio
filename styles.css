@@ -1006,6 +1006,12 @@ section {
   letter-spacing: -0.05em;
   line-height: 1;
   color: var(--color-text-primary);
+  /* Same glass panel as the cards so the WebGL shapes can't sit right behind the digits */
+  padding: 0.12em 0.32em 0.16em 0.28em;
+  background: rgba(19, 19, 26, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.3em;
+  backdrop-filter: blur(24px);
 }
 
 .tl-dot {
