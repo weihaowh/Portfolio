@@ -157,28 +157,30 @@ window.addEventListener('load', () => {
 // SMOOTH SCROLL TO TOP
 // ===================================
 
-// Optional: Add a "scroll to top" button
+// Scroll-to-top button: glass circle whose ring fills as you scroll down the page
 function createScrollToTopButton() {
+  const RING = 2 * Math.PI * 23; // circumference of the r=23 progress circle
+
   const button = document.createElement('button');
-  button.innerHTML = '↑';
   button.className = 'scroll-to-top';
-  button.style.cssText = `
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: var(--gradient-primary);
-    color: white;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    z-index: 999;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  button.setAttribute('aria-label', 'Back to top');
+  button.innerHTML = `
+    <svg class="scroll-to-top-ring" viewBox="0 0 52 52" aria-hidden="true">
+      <defs>
+        <linearGradient id="scrollRingGradient" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#667eea" />
+          <stop offset="100%" stop-color="#4facfe" />
+        </linearGradient>
+      </defs>
+      <circle class="scroll-to-top-track" cx="26" cy="26" r="23" />
+      <circle class="scroll-to-top-progress" cx="26" cy="26" r="23"
+        stroke-dasharray="${RING}" stroke-dashoffset="${RING}" />
+    </svg>
+    <svg class="scroll-to-top-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 19V5M5 12l7-7 7 7" />
+    </svg>
   `;
+  const progress = button.querySelector('.scroll-to-top-progress');
 
   button.addEventListener('click', () => {
     window.scrollTo({
@@ -187,17 +189,17 @@ function createScrollToTopButton() {
     });
   });
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-      button.style.opacity = '1';
-      button.style.transform = 'translateY(0)';
-    } else {
-      button.style.opacity = '0';
-      button.style.transform = 'translateY(20px)';
-    }
-  });
+  const update = () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const ratio = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+    progress.style.strokeDashoffset = RING * (1 - ratio);
+    button.classList.toggle('visible', window.scrollY > 300);
+  };
 
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
   document.body.appendChild(button);
+  update();
 }
 
 // Initialize scroll to top button
